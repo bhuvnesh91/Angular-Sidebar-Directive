@@ -1,0 +1,118 @@
+<style>
+.navigation{
+    float: left;
+}
+
+.navigation>ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation-items a {
+    display: block;
+    background-color: #444;
+    color: white;
+    line-height: 2em;
+    text-decoration: none;
+    padding: 10px 30px;
+}
+
+.navigation-items a:hover {
+    background-color: #222;
+}
+
+.sidebar {
+    position: absolute;
+}
+
+#navigation-toggle {
+    position: absolute;
+    background: #444;
+    color: white;
+    text-decoration: none;
+    padding: 0 3px 0px 0px;
+    font-size: xx-large;
+}
+
+.navigation.ng-hide-add {
+    animation: 0.5s slideOutLeft ease;
+}
+
+.navigation.ng-hide-remove {
+    animation: 0.5s slideInLeft ease;
+}
+
+@-webkit-keyframes slideOutLeft {
+    from {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        visibility: hidden;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        visibility: hidden;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+@-webkit-keyframes slideInLeft {
+    from {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+</style>
+
+<div class="sidebar">
+    <div class="navigation" ng-show="state">
+        <ul>
+            <li class="navigation-items" ng-repeat="item in listItems">
+                <a ui-sref="{{item.route}}">
+                <span class="icon-box bg-color-app set-icon">
+                    <i ng-class="item.font"></i>
+                </span>
+                <span class="text-box">
+                    {{item.name}}
+                </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <span id="navigation-toggle" ng-click="state=!state">
+        <i class="fa fa-angle-left" ng-show="state"></i>
+        <i class="fa fa-angle-right" ng-show="!state"></i>
+    </span>
+</div>
